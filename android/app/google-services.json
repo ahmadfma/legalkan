@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "389452750428",
+    "project_id": "unhas-merdeka",
+    "storage_bucket": "unhas-merdeka.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389452750428:android:1f5fe2e72ee0f8d1765099",
+        "android_client_info": {
+          "package_name": "com.ahmadfma.legalkan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7n2x1tW0hZ0RbZQSO4PKR98_RdqcFLWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
