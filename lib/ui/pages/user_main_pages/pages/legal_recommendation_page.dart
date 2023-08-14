@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:legalkan/common/dimensions.dart';
 import 'package:legalkan/common/styles.dart';
 import 'package:legalkan/core/models/my_activity.dart';
+import 'package:legalkan/ui/widgets/custom_button.dart';
+import 'package:legalkan/ui/widgets/custom_textfield.dart';
 import 'package:legalkan/ui/widgets/my_activity.dart';
 
 class LegalRecommendationPage extends StatelessWidget {
@@ -25,42 +28,69 @@ class LegalRecommendationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
+    return SafeArea(
       child: Scaffold(
         backgroundColor: backgroundColor,
-        appBar: AppBar(
-          title: Text("Kegiatanku", style: myTextTheme.titleLarge?.copyWith(color: Colors.white),),
-          centerTitle: true,
-          bottom: PreferredSize(
-            preferredSize: _tabBar.preferredSize,
-            child: Material(
-              color: Colors.white,
-              child: _tabBar,
-            ),
-          )
-        ),
-        body: const TabBarView(
-          children: [
-            ActivityContentPage(isActive: false),
-            ActivityContentPage(isActive: true),
-          ],
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(defaultMarginSize),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Biarkan kami membantu persoalan legalmu !", style: myTextTheme.titleLarge?.copyWith(fontSize: 24),),
+              const SizedBox(height: 8,),
+              Text("Kami bisa memberikan daftar dokumen yang kamu butuhkan", style: myTextTheme.bodyMedium?.copyWith(fontSize: 14),),
+              const SizedBox(height: 8,),
+              CustomTextField(
+                hint: 'Nama Usaha',
+                onChanged: (value) {},
+                isCardMode: true,
+              ),
+              const SizedBox(height: defaultMarginSize,),
+              CustomTextField(
+                hint: 'Deskripsi Usaha',
+                onChanged: (value) {},
+                isCardMode: true,
+              ),
+              const SizedBox(height: defaultMarginSize,),
+              CustomTextField(
+                hint: 'Total Karyawan',
+                onChanged: (value) {},
+                isCardMode: true,
+              ),
+              const SizedBox(height: defaultMarginSize,),
+              CustomTextField(
+                hint: 'Lokasi',
+                onChanged: (value) {},
+                isCardMode: true,
+              ),
+              const SizedBox(height: defaultMarginSize,),
+              CustomTextField(
+                hint: 'Jenis Kegiatan',
+                onChanged: (value) {},
+                isCardMode: true,
+              ),
+              const SizedBox(height: defaultMarginSize,),
+              CustomTextField(
+                hint: 'Pendapatan',
+                onChanged: (value) {},
+                isCardMode: true,
+              ),
+              const SizedBox(height: defaultMarginSize,),
+              CustomTextField(
+                hint: 'Modal Awal',
+                onChanged: (value) {},
+                isCardMode: true,
+              ),
+              const SizedBox(height: defaultMarginSize,),
+              CustomButton(
+                textStyle: myTextTheme.labelLarge?.copyWith(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
+                text: "Submit",
+                onPressed: () {},
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
-class ActivityContentPage extends StatelessWidget {
-  final bool isActive;
-  const ActivityContentPage({Key? key, required this.isActive}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (context, index) => MyActivityWidget(myActivity: dummyMyActivities[index]),
-      itemCount: dummyMyActivities.length,
-    );
-  }
-}
-

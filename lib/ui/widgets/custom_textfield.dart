@@ -21,7 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.isCardMode = false,
     this.isReadOnly = false,
     this.isObscureText = false,
-    this.padding = const EdgeInsets.symmetric(horizontal: mediumMarginSize, vertical: extraSmallMarginSize),
+    this.padding = const EdgeInsets.symmetric(horizontal: smallMarginSize, vertical: 2),
     this.textEditingController,
     this.boxDecoration,
   }) : super(key: key);
@@ -49,9 +49,9 @@ class CustomTextField extends StatelessWidget {
       obscureText: isObscureText,
       decoration: InputDecoration(
           hintText: hint,
-          hintStyle: myTextTheme.labelLarge?.copyWith(color: greyText3),
+          hintStyle: myTextTheme.labelMedium?.copyWith(color: greyText3),
           border: InputBorder.none,
-          labelStyle: myTextTheme.labelLarge
+          labelStyle: myTextTheme.labelMedium
       ),
       style: myTextTheme.labelLarge,
       onChanged: (value) => onChanged(value),
