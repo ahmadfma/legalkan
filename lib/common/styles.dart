@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const Color primaryColor = Color(0xFFD52525);
-const Color secondaryColor = Color(0xFFFF7D42);
-const Color blue = Color(0xFF0578EC);
+const Color primaryColor = Color(0xFF233856);
+const Color secondaryColor = Color(0xFFEF6356);
+const Color blue = Color(0xFF1B61BA);
+const Color orange = Color(0xFFFFC861);
+const Color green = Color(0xFF67C636);
+
 const Color blackText = Color(0xFF212121);
 const Color greyText = Color(0xFFB0B0B0);
 const Color greyText2 = Color(0xFF5B5B5B);
@@ -13,9 +16,7 @@ const Color grey02 = Color(0xFFA4A4A4);
 const Color greyStroke = Color(0xFFB5B5B5);
 const Color greyBackground = Color(0xFFE7E7E7);
 const Color backgroundColor = Color(0xFFF6F6F6);
-const Color green = Color(0xFF00A624);
 const Color greyIcon = Color(0xFFDEDEDE);
-const Color orange = Color(0xFFFFDA15);
 const Color lightRed = Color(0xFFFFAFAF);
 const Color lightGreen = Color(0xFF67EF85);
 const Color lightBlue = Color(0xFFA3D1FF);
@@ -44,7 +45,7 @@ final appbarTitleStyle = myTextTheme.titleLarge?.copyWith(color: Colors.white);
 
 final whiteCardDecoration = BoxDecoration(
     color: Colors.white,
-    borderRadius: BorderRadius.circular(8),
+    borderRadius: BorderRadius.circular(6),
     boxShadow: [
       BoxShadow(
           color: grey02.withOpacity(0.35),

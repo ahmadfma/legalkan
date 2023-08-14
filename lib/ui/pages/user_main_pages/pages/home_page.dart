@@ -7,12 +7,15 @@ import 'package:legalkan/ui/pages/document_page.dart';
 import 'package:legalkan/ui/pages/information_center_page.dart';
 import 'package:legalkan/ui/pages/registration_page.dart';
 import 'package:legalkan/ui/widgets/activity_type.dart';
+import 'package:legalkan/ui/widgets/article_widget.dart';
 import 'package:legalkan/ui/widgets/default_user_image.dart';
 import 'package:legalkan/ui/widgets/home_topbar_menu.dart';
 import 'package:legalkan/ui/widgets/testimoni.dart';
 import '../../../../common/styles.dart';
+import '../../../../core/models/document.dart';
+import '../../../widgets/menu_tile.dart';
 import '../../detail_profile_page.dart';
-import 'activity_page.dart';
+import 'legal_recommendation_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,10 +31,8 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               topBar(context),
-              activityType(context),
-              testimoni(context),
-              const SizedBox(height: 50,),
-              bottomImage(context),
+              documentType(context),
+              article(context),
             ],
           ),
         ),
@@ -44,36 +45,42 @@ Widget topBar(BuildContext context) {
   final size = MediaQuery.of(context).size;
   return Stack(
     children: [
-      SizedBox(height: size.height * 0.7,), //stack height
+      SizedBox(height: size.height * 0.2,), //stack height
       SizedBox(
-        height:  size.height * 0.6,
+        height:  size.height * 0.23,
         width: double.infinity,
         child: ClipRRect(
-          borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(80)),
-          child: Image.asset("assets/images/home_appbar_background.png", fit: BoxFit.cover),
+          child: Container(
+            color: primaryColor,
+          )
         ),
       ),
       Positioned(
-        top: 16,
-        left: 16,
-        child: Image.asset("assets/images/logo_unhas.png", width: 50,),
-      ),
-      Positioned(
-        top: 26,
+        top: 0,
         left: 0,
         right: 0,
         child: Column(
           children: [
-            Text("Beranda", style: myTextTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 18),),
-            const SizedBox(height: veryBigMarginSize,),
-            const DefaultUserImage(),
-            const SizedBox(height: defaultMarginSize,),
-            Text("Ahmad Fathanah M.Adil", style: myTextTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w600),),
-            const SizedBox(height: smallMarginSize,),
-            Text("D121191048", style: myTextTheme.titleSmall?.copyWith(color: Colors.white, fontWeight: FontWeight.w400),),
-            const SizedBox(height: smallMarginSize,),
-            Text("Teknik Informatika", style: myTextTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w500),),
-            const SizedBox(height: 34,),
+            Padding(
+              padding: const EdgeInsets.only(left: defaultMarginSize, right: defaultMarginSize, top: defaultMarginSize),
+              child: Row(
+                children: [
+                  const DefaultUserImage(iconSize: 25, size: 50,),
+                  const SizedBox(width: smallMarginSize,),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Ahmad Fathanah M.Adil", style: myTextTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600, color: Colors.white),),
+                        Text("ahmadfathanah05@gmail.com", style: myTextTheme.bodyMedium?.copyWith(color: Colors.white, fontSize: 12),)
+                      ],
+                    ),
+                  ),
+                  Icon(Icons.settings, color: Colors.white,)
+                ],
+              ),
+            ),
+            const SizedBox(height: semiBigMarginSize,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: defaultMarginSize),
               child: Row(
@@ -81,90 +88,35 @@ Widget topBar(BuildContext context) {
                 children: [
                   HomeTopBarMenu(
                     onTap: () {
-                      Navigator.of(context).pushNamed(ActivityPage.route);
+                      Navigator.of(context).pushNamed(LegalRecommendationPage.route);
                     },
-                    title: 'Kegiatan Saya',
+                    title: 'Rekomendasi',
                     imageAsset: 'assets/images/biography.png',
                   ),
                   HomeTopBarMenu(
                     onTap: () {
                       Navigator.of(context).pushNamed(DocumentPage.route, arguments: true);
                     },
-                    title: 'Dokumen Saya',
+                    title: 'Review',
                     imageAsset: 'assets/images/notes.png',
                   ),
                   HomeTopBarMenu(
                     onTap: () {
                       Navigator.of(context).pushNamed(InformationCenterPage.route);
                     },
-                    title: 'Pusat Informasi',
+                    title: 'Consultant',
                     imageAsset: 'assets/images/warning.png',
                   ),
                   HomeTopBarMenu(
                     onTap: () {
                       Navigator.of(context).pushNamed(DetailProfilePage.route);
                     },
-                    title: 'Profile',
+                    title: 'Assistant',
                     imageAsset: 'assets/images/activity.png',
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 34,),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              margin: const EdgeInsets.symmetric(horizontal: defaultMarginSize),
-              elevation: 3,
-              child: Container(
-                width: double.infinity,
-                height: size.height * 0.2,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text("Kampus Merdeka", style: myTextTheme.bodyLarge?.copyWith(color: blue, fontWeight: FontWeight.w900, fontSize: 18),),
-                          const SizedBox(height: smallMarginSize,),
-                          Container(
-                            constraints: BoxConstraints(
-                                maxWidth: size.width * 0.7
-                            ),
-                            child: Text("Daftar dirimu di program kampus merdeka untuk mendapatkan pengalaman lebih", style: myTextTheme.bodySmall?.copyWith(color: greyText3, fontWeight: FontWeight.w500, height: 1.5),),
-                          )
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      bottom: -40,
-                      right: -5,
-                      child: Image.asset('assets/images/champions2.png', width: 140,),
-                    ),
-                    Positioned(
-                      bottom: 8,
-                      left: 14,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, RegistrationPage.route);
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 46),
-                          child: Text("Daftar"),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
           ],
         ),
       )
@@ -172,62 +124,82 @@ Widget topBar(BuildContext context) {
   );
 }
 
-Widget activityType(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.only(left: defaultMarginSize, right: defaultMarginSize, top: bigMarginSize),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text("Jenis Kegiatan", style: myTextTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),),
-        const SizedBox(height: defaultMarginSize,),
-        FlexibleGridView(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          axisCount: GridLayoutEnum.twoElementsInRow,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-          children: [
-            ...dummyActivityTypes.map((e) => ActivityTypeWidget(e)).toList()
-          ],
-        ),
-      ],
-    ),
-  );
-}
-
-Widget testimoni(BuildContext context) {
+Widget documentType(BuildContext context) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Padding(
-        padding: const EdgeInsets.only(left: defaultMarginSize, right: defaultMarginSize, top: bigMarginSize),
-        child: Text("Testimoni", style: myTextTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),),
-      ),
-      SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.only(right: defaultMarginSize),
+        padding: const EdgeInsets.only(left: defaultMarginSize, top: defaultMarginSize, right: defaultMarginSize),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ...dummyTestimoni.map((e) => TestimoniWidget(testimoni: e)).toList()
+            Text("Dokumen Pemerintah", style: myTextTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 14),),
+            Text("Selengkapnya", style: myTextTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 12, color: blue),),
           ],
         ),
-      )
+      ),
+      const SizedBox(height: defaultMarginSize,),
+      SingleChildScrollView(
+        child: Column(
+          children: [
+            ...dummyDocuments
+                .map((e) => MenuTile(
+              iconAsset: 'assets/images/pdf.png',
+              title: e.name ?? "-",
+              subTitle: e.status == 0 ? "Sedang diproses" : "Diterima",
+              isDocument: true,
+              documentStatus: e.status,
+              onTap: () {},
+            ))
+                .toList()
+          ],
+        ),
+      ),
     ],
   );
 }
 
-Widget bottomImage(BuildContext context) {
-  return Stack(
+Widget article(BuildContext context) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Image.asset('assets/images/champions.png', width: double.infinity,),
-      Positioned(
-        bottom: 16,
-        right: 0,
-        left: 0,
-        child: Center(child: Text("Keep On Fighting Till The End", style: myTextTheme.bodySmall?.copyWith(color: Colors.white, fontSize: 10),),),
-      )
+      Padding(
+        padding: const EdgeInsets.only(left: defaultMarginSize, right: defaultMarginSize),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Artikel", style: myTextTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 14),),
+            Text("Selengkapnya", style: myTextTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 12, color: blue),),
+          ],
+        ),
+      ),
+      const SizedBox(height: defaultMarginSize,),
+      SingleChildScrollView(
+        child: Column(
+          children: [
+            ArticleCard(
+                title: "asldnasldknasld",
+                author: "Ahmad Fathanah",
+                content: "asdjkasnd akjsd asdlas dlasdjal skdjla skdjla s dljaslkdlaskjd laksjldasd",
+                imageUrl: 'https://akcdn.detik.net.id/visual/2019/10/23/fe56d74a-2bcf-4129-bf03-c63a2eb0c0a6_169.jpeg?w=715&q=90'
+            ),
+            ArticleCard(
+                title: "asldnasldknasld",
+                author: "Ahmad Fathanah",
+                content: "asdjkasnd akjsd asdlas dlasdjal skdjla skdjla s dljaslkdlaskjd laksjldasd",
+                imageUrl: 'https://akcdn.detik.net.id/visual/2019/10/23/fe56d74a-2bcf-4129-bf03-c63a2eb0c0a6_169.jpeg?w=715&q=90'
+            ),
+            ArticleCard(
+                title: "asldnasldknasld",
+                author: "Ahmad Fathanah",
+                content: "asdjkasnd akjsd asdlas dlasdjal skdjla skdjla s dljaslkdlaskjd laksjldasd",
+                imageUrl: 'https://akcdn.detik.net.id/visual/2019/10/23/fe56d74a-2bcf-4129-bf03-c63a2eb0c0a6_169.jpeg?w=715&q=90'
+            )
+          ],
+        ),
+      ),
     ],
   );
 }

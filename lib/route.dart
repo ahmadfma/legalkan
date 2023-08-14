@@ -9,8 +9,9 @@ import 'package:legalkan/ui/pages/document_page.dart';
 import 'package:legalkan/ui/pages/information_center_page.dart';
 import 'package:legalkan/ui/pages/login_page.dart';
 import 'package:legalkan/ui/pages/mahasiswa_bimbingan_activity_page.dart';
+import 'package:legalkan/ui/pages/splash_screen.dart';
 import 'package:legalkan/ui/pages/user_main_pages/user_main_page.dart';
-import 'package:legalkan/ui/pages/user_main_pages/pages/activity_page.dart';
+import 'package:legalkan/ui/pages/user_main_pages/pages/legal_recommendation_page.dart';
 import 'package:legalkan/ui/pages/registration_page.dart';
 import 'package:legalkan/ui/pages/update_final_status_activity_page.dart';
 
@@ -20,6 +21,8 @@ Route<dynamic> routeGenerators(settings) {
   switch(settings.name) {
     case UserMainPage.routeName:
       return MaterialPageRoute(builder: (context) => const UserMainPage());
+    case SplashScreen.route:
+      return MaterialPageRoute(builder: (context) => const SplashScreen(),);
     case RegistrationPage.route:
       return MaterialPageRoute(builder: (context) => const RegistrationPage());
     case DetailActivityPage.route:
@@ -36,8 +39,8 @@ Route<dynamic> routeGenerators(settings) {
       return MaterialPageRoute(builder: (context) => const AddActivitySubjectPage(),);
     case LoginPage.route:
       return MaterialPageRoute(builder: (context) => const LoginPage(),);
-    case ActivityPage.route:
-      return MaterialPageRoute(builder: (context) => const ActivityPage(),);
+    case LegalRecommendationPage.route:
+      return MaterialPageRoute(builder: (context) => const LegalRecommendationPage(),);
     case InformationCenterPage.route:
       return MaterialPageRoute(builder: (context) => const InformationCenterPage(),);
     case UpdateFinalStatusActivityPage.route:

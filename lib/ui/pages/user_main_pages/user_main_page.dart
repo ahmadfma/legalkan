@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:legalkan/ui/pages/user_main_pages/pages/activity_page.dart';
+import 'package:legalkan/ui/pages/user_main_pages/pages/legal_assistant_page.dart';
+import 'package:legalkan/ui/pages/user_main_pages/pages/legal_recommendation_page.dart';
 import 'package:legalkan/ui/pages/user_main_pages/pages/home_page.dart';
-import 'package:legalkan/ui/pages/user_main_pages/pages/notifications_page.dart';
-import 'package:legalkan/ui/pages/user_main_pages/pages/profile_page.dart';
+import 'package:legalkan/ui/pages/user_main_pages/pages/legal_review_page.dart';
+import 'package:legalkan/ui/pages/user_main_pages/pages/legal_consultant_page.dart';
 import '../../../common/styles.dart';
 
 class UserMainPage extends StatefulWidget {
@@ -20,9 +21,10 @@ class _UserMainPageState extends State<UserMainPage> {
 
   final _pages = const [
     HomePage(),
-    ActivityPage(),
-    NotificationsPage(),
-    ProfilePage(),
+    LegalRecommendationPage(),
+    LegalReviewPage(),
+    LegalAssistantPage(),
+    LegalConsultantPage(),
   ];
 
   var _currentPageIndex = 0;
@@ -42,35 +44,38 @@ class _UserMainPageState extends State<UserMainPage> {
           BottomNavigationBarItem(
             icon: SvgPicture.asset("assets/icons/home.svg"),
             activeIcon: SvgPicture.asset("assets/icons/home_active.svg"),
-            label: "Beranda"
+            label: "Home"
           ),
           BottomNavigationBarItem(
               icon: SvgPicture.asset("assets/icons/activity.svg"),
               activeIcon: SvgPicture.asset("assets/icons/activity_active.svg"),
-              label: "Kegiatan"
+              label: "Rekomendasi",
           ),
           BottomNavigationBarItem(
               icon: SvgPicture.asset("assets/icons/notif.svg"),
               activeIcon: SvgPicture.asset("assets/icons/notif_active.svg"),
-              label: "Notifikasi"
+              label: "Review"
           ),
           BottomNavigationBarItem(
               icon: SvgPicture.asset("assets/icons/profile.svg"),
               activeIcon: SvgPicture.asset("assets/icons/profile_active.svg"),
-              label: "Profile"
+              label: "E-lawyer"
+          ),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset("assets/icons/profile.svg"),
+              activeIcon: SvgPicture.asset("assets/icons/profile_active.svg"),
+              label: "Assistant"
           )
         ],
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         onTap: _onItemTapped,
-        selectedLabelStyle: myTextTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
-        unselectedLabelStyle: myTextTheme.bodySmall,
+        selectedLabelStyle: myTextTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600, fontSize: 11),
+        unselectedLabelStyle: myTextTheme.bodySmall?.copyWith(fontSize: 11),
         currentIndex: _currentPageIndex,
         selectedItemColor: blue,
-        unselectedItemColor: blue.withOpacity(0.7),
-        selectedFontSize: 14,
-        unselectedFontSize: 14,
-        iconSize: 24,
+        unselectedItemColor: blue.withOpacity(0.6),
+        iconSize: 22,
       ),
     );
   }

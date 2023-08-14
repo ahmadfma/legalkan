@@ -4,18 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:legalkan/common/dimensions.dart';
 import 'package:legalkan/ui/pages/detail_profile_page.dart';
+import 'package:legalkan/ui/pages/splash_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../common/styles.dart';
+import '../../../../locator.dart';
+import '../../../../utils/custom_navigator.dart';
 import '../../../widgets/profile_menu.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+class LegalConsultantPage extends StatefulWidget {
+  const LegalConsultantPage({Key? key}) : super(key: key);
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<LegalConsultantPage> createState() => _LegalConsultantPageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _LegalConsultantPageState extends State<LegalConsultantPage> {
   XFile? selectedProfileImage;
 
   @override
@@ -101,7 +104,7 @@ class _ProfilePageState extends State<ProfilePage> {
               icons: Icons.logout,
               text: "Logout",
               onClick: () {
-                //TODO: logout
+                locator<NavigationCustom>().navigateReplace(SplashScreen.route);
               },
             ),
           ],

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:legalkan/common/styles.dart';
 
-class NotificationsPage extends StatelessWidget {
-  const NotificationsPage({Key? key}) : super(key: key);
+class LegalReviewPage extends StatelessWidget {
+  const LegalReviewPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

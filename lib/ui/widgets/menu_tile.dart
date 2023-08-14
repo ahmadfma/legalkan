@@ -38,7 +38,7 @@ class MenuTile extends StatelessWidget {
       child: Container(
         decoration: whiteCardDecoration.copyWith(color: isLock ? greyBackground : Colors.white),
         margin: const EdgeInsets.only(left: defaultMarginSize, right: defaultMarginSize, bottom: bigMarginSize),
-        padding: const EdgeInsets.symmetric(horizontal: mediumMarginSize, vertical: defaultMarginSize),
+        padding: const EdgeInsets.symmetric(horizontal: mediumMarginSize, vertical: mediumMarginSize),
         width: double.infinity,
         child: Row(
           children: [
@@ -48,20 +48,20 @@ class MenuTile extends StatelessWidget {
               width: 26,
               child: const CircularProgressIndicator(color: blue),
             ),
-            if(showLoading == null || showLoading == false) Image.asset(iconAsset, height: 50),
+            if(showLoading == null || showLoading == false) Image.asset(iconAsset, height: 30),
             const SizedBox(width: mediumMarginSize,),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(title, style: myTextTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, fontSize: 14),),
+                  Text(title, style: myTextTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, fontSize: 12),),
                   getSubtitle()
                 ],
               ),
             ),
-            if(!isLock && !isDocument) const Icon(Icons.keyboard_arrow_right, color: blue, size: 34,),
-            if(isDocument && documentStatus == DocumentStatus.diterima.status) const Icon(Icons.keyboard_arrow_right, color: blue, size: 34,),
+            if(!isLock && !isDocument) const Icon(Icons.keyboard_arrow_right, color: blue, size: 24,),
+            if(isDocument && documentStatus == DocumentStatus.diterima.status) const Icon(Icons.keyboard_arrow_right, color: blue, size: 24,),
             if(isLock) const Padding(
               padding: EdgeInsets.only(right: extraSmallMarginSize),
               child: Icon(Icons.lock_outline_rounded, color: blackText, size: 26, ),
@@ -77,8 +77,8 @@ class MenuTile extends StatelessWidget {
       return Column(
         children: [
           const SizedBox(height: extraSmallMarginSize,),
-          if(!isDocument || documentStatus == DocumentStatus.sedangDiproses.status) Text(subTitle, style: myTextTheme.displayMedium?.copyWith(fontSize: 14, letterSpacing: 0.25),),
-          if(isDocument && documentStatus == DocumentStatus.diterima.status) Text(subTitle, style: myTextTheme.displayMedium?.copyWith(fontSize: 14, letterSpacing: 0.25, color: green, fontWeight: FontWeight.w700),),
+          if(!isDocument || documentStatus == DocumentStatus.sedangDiproses.status) Text(subTitle, style: myTextTheme.displayMedium?.copyWith(fontSize: 12, letterSpacing: 0.25),),
+          if(isDocument && documentStatus == DocumentStatus.diterima.status) Text(subTitle, style: myTextTheme.displayMedium?.copyWith(fontSize: 12, letterSpacing: 0.25, color: green, fontWeight: FontWeight.w700),),
         ],
       );
     }

@@ -3,10 +3,10 @@ import 'package:legalkan/common/styles.dart';
 import 'package:legalkan/core/models/my_activity.dart';
 import 'package:legalkan/ui/widgets/my_activity.dart';
 
-class ActivityPage extends StatelessWidget {
-  static const route = '/activity-page';
+class LegalRecommendationPage extends StatelessWidget {
+  static const route = '/legal-recommendation-page';
 
-  const ActivityPage({Key? key}) : super(key: key);
+  const LegalRecommendationPage({Key? key}) : super(key: key);
 
   TabBar get _tabBar => TabBar(
     indicatorColor: primaryColor,

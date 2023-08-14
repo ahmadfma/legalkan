@@ -15,19 +15,19 @@ class HomeTopBarMenu extends StatelessWidget {
         InkWell(
           onTap: () => onTap(),
           child: Container(
-            width: 60,
-            height: 60,
+            width: 50,
+            height: 50,
             decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(8)
+                borderRadius: BorderRadius.circular(4)
             ),
             child: Center(
-              child: Image.asset(imageAsset, height: 45,),
+              child: Image.asset(imageAsset, height: 38,),
             ),
           ),
         ),
         const SizedBox(height: smallMarginSize,),
-        Text(title, style: myTextTheme.bodyMedium?.copyWith(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w700),)
+        Text(title, style: myTextTheme.bodyMedium?.copyWith(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w700), textAlign: TextAlign.center,)
       ],
     );
   }
