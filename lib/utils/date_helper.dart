@@ -1,9 +1,9 @@
 import 'package:intl/intl.dart';
 
-String parseDate(String? date) {
+String parseDate(String? date, {String pattern = 'dd MMM yyyy'}) {
   if(date != null) {
     final dateTime = DateTime.parse(date).toLocal();
-    final format = DateFormat('dd MMM yyyy');
+    final format = DateFormat(pattern);
     return format.format(dateTime);
   } else {
     return "";

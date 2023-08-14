@@ -6,7 +6,7 @@ import 'package:legalkan/utils/enum.dart';
 class MenuTile extends StatelessWidget {
   final String iconAsset;
   final String title;
-  final String subTitle;
+  final String? subTitle;
   final bool isLock;
   final bool isDocument;
   final int? documentStatus;
@@ -17,7 +17,7 @@ class MenuTile extends StatelessWidget {
     Key? key,
     required this.iconAsset,
     required this.title,
-    required this.subTitle,
+    this.subTitle,
     required this.onTap,
     this.isLock = false,
     this.isDocument = false,
@@ -37,7 +37,7 @@ class MenuTile extends StatelessWidget {
       },
       child: Container(
         decoration: whiteCardDecoration.copyWith(color: isLock ? greyBackground : Colors.white),
-        margin: const EdgeInsets.only(left: defaultMarginSize, right: defaultMarginSize, bottom: bigMarginSize),
+        margin: const EdgeInsets.only(left: defaultMarginSize, right: defaultMarginSize, bottom: 16),
         padding: const EdgeInsets.symmetric(horizontal: mediumMarginSize, vertical: mediumMarginSize),
         width: double.infinity,
         child: Row(
@@ -73,12 +73,12 @@ class MenuTile extends StatelessWidget {
   }
 
   Widget getSubtitle() {
-    if(showLoading != true) {
+    if(showLoading != true && subTitle != null) {
       return Column(
         children: [
           const SizedBox(height: extraSmallMarginSize,),
-          if(!isDocument || documentStatus == DocumentStatus.sedangDiproses.status) Text(subTitle, style: myTextTheme.displayMedium?.copyWith(fontSize: 12, letterSpacing: 0.25),),
-          if(isDocument && documentStatus == DocumentStatus.diterima.status) Text(subTitle, style: myTextTheme.displayMedium?.copyWith(fontSize: 12, letterSpacing: 0.25, color: green, fontWeight: FontWeight.w700),),
+          if(!isDocument || documentStatus == DocumentStatus.sedangDiproses.status) Text(subTitle!, style: myTextTheme.displayMedium?.copyWith(fontSize: 12, letterSpacing: 0.25),),
+          if(isDocument && documentStatus == DocumentStatus.diterima.status) Text(subTitle!, style: myTextTheme.displayMedium?.copyWith(fontSize: 12, letterSpacing: 0.25, color: green, fontWeight: FontWeight.w700),),
         ],
       );
     }

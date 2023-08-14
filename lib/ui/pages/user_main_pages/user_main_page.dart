@@ -75,6 +75,7 @@ class _UserMainPageState extends State<UserMainPage> {
         currentIndex: _currentPageIndex,
         selectedItemColor: blue,
         unselectedItemColor: blue.withOpacity(0.6),
+        backgroundColor: Colors.white,
         iconSize: 22,
       ),
     );

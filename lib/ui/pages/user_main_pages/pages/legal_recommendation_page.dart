@@ -85,7 +85,9 @@ class LegalRecommendationPage extends StatelessWidget {
               CustomButton(
                 textStyle: myTextTheme.labelLarge?.copyWith(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
                 text: "Submit",
-                onPressed: () {},
+                onPressed: () {
+
+                },
               )
             ],
           ),
