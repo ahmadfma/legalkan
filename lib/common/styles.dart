@@ -47,7 +47,7 @@ final appbarTitleStyle = myTextTheme.titleLarge?.copyWith(color: Colors.white);
 
 final whiteCardDecoration = BoxDecoration(
     color: Colors.white,
-    borderRadius: BorderRadius.circular(12),
+    borderRadius: BorderRadius.circular(8),
     boxShadow: [
       BoxShadow(
           color: grey02.withOpacity(0.35),

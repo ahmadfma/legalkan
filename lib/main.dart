@@ -7,6 +7,7 @@ import 'package:legalkan/service/firebase_service.dart';
 import 'package:legalkan/service/notification_service.dart';
 import 'package:legalkan/ui/pages/login_page.dart';
 import 'package:legalkan/ui/pages/splash_screen.dart';
+import 'package:legalkan/ui/pages/user_main_pages/user_main_page.dart';
 import 'package:legalkan/utils/custom_navigator.dart';
 import 'common/styles.dart';
 
@@ -73,7 +74,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       navigatorKey: locator<NavigationCustom>().navigatorKey,
-      home: const SplashScreen(),
+      home: const UserMainPage(),
       onGenerateRoute: routeGenerators,
     );
   }

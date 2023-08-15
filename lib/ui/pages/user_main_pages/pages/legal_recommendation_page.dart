@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:legalkan/common/dimensions.dart';
 import 'package:legalkan/common/styles.dart';
 import 'package:legalkan/core/models/my_activity.dart';
+import 'package:legalkan/ui/pages/recommendation_output_page.dart';
 import 'package:legalkan/ui/widgets/custom_button.dart';
 import 'package:legalkan/ui/widgets/custom_textfield.dart';
 import 'package:legalkan/ui/widgets/my_activity.dart';
@@ -39,7 +40,7 @@ class LegalRecommendationPage extends StatelessWidget {
               Text("Biarkan kami membantu persoalan legalmu !", style: myTextTheme.titleLarge?.copyWith(fontSize: 24),),
               const SizedBox(height: 8,),
               Text("Kami bisa memberikan daftar dokumen yang kamu butuhkan", style: myTextTheme.bodyMedium?.copyWith(fontSize: 14),),
-              const SizedBox(height: 8,),
+              const SizedBox(height: defaultMarginSize,),
               CustomTextField(
                 hint: 'Nama Usaha',
                 onChanged: (value) {},
@@ -86,7 +87,7 @@ class LegalRecommendationPage extends StatelessWidget {
                 textStyle: myTextTheme.labelLarge?.copyWith(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
                 text: "Submit",
                 onPressed: () {
-
+                  Navigator.of(context).pushNamed(RecommendationOutputPage.route);
                 },
               )
             ],
