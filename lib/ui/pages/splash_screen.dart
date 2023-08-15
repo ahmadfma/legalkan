@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:legalkan/locator.dart';
 import 'package:legalkan/ui/pages/login_page.dart';
+import 'package:legalkan/ui/pages/user_main_pages/user_main_page.dart';
 import 'package:legalkan/utils/custom_navigator.dart';
 import '../../common/dimensions.dart';
 import '../../common/styles.dart';
@@ -19,50 +20,40 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
-      locator<NavigationCustom>().navigateReplace(LoginPage.route);
+      locator<NavigationCustom>().navigateReplace(UserMainPage.routeName);
     },);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Wrap(
-              direction: Axis.horizontal,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                Image.asset("assets/images/logo_unhas.png", height: 80,),
-                const SizedBox(width: 26,),
-                Image.asset('assets/images/logo_kampus_merdeka.png',height: 80,)
-              ],
-            ),
-            const SizedBox(height: 50,),
-            Text("Universitas Hasanuddin", style: myTextTheme.titleLarge?.copyWith(fontSize: 22, fontWeight: FontWeight.w700),),
-            Text.rich(
-                TextSpan(
-                    children: [
-                      TextSpan(
-                          text: "Kampus ",
-                          style: myTextTheme.titleLarge?.copyWith(fontSize: 18, fontWeight: FontWeight.w700, color: primaryColor)
-                      ),
-                      TextSpan(
-                          text: "Merdeka",
-                          style: myTextTheme.titleLarge?.copyWith(fontSize: 18, fontWeight: FontWeight.w700, color: blue)
-                      )
-                    ]
-                )
-            ),
-            const SizedBox(height: 50,),
-            const CircularProgressIndicator(),
-            const SizedBox(height: defaultMarginSize,),
-            Text("Please wait...", style: myTextTheme.bodySmall?.copyWith(),)
-          ],
-        ),
+    final size = MediaQuery.of(context).size;
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          height: size.height,
+          child: Stack(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: defaultMarginSize, ),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 80,),
+                    Image.asset('assets/images/logo.png', height: 80, fit: BoxFit.cover, ),
+                    const SizedBox(height: bigMarginSize,),
+                    Text("One Stop Solution Business legal and Mobile Consulting using\nGenerative AI", textAlign: TextAlign.center, style: myTextTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),),
+                  ],
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Image.asset('assets/images/splash_image.png'),
+              )
+            ],
+          ),
+        )
       ),
     );
   }

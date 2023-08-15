@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       navigatorKey: locator<NavigationCustom>().navigatorKey,
-      home: const UserMainPage(),
+      home: const SplashScreen(),
       onGenerateRoute: routeGenerators,
     );
   }
