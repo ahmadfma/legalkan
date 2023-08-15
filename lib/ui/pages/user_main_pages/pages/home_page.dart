@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:legalkan/common/dimensions.dart';
+import 'package:legalkan/ui/pages/setting_page.dart';
 import 'package:legalkan/ui/widgets/article_widget_horizontal.dart';
 import 'package:legalkan/ui/widgets/feauture_card_widget.dart';
 import '../../../../common/styles.dart';
@@ -54,7 +55,10 @@ class HomePage extends StatelessWidget {
 
 Widget topBar(BuildContext context) {
   return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
+/*      const SizedBox(height: defaultMarginSize,),
+      Padding(padding: EdgeInsets.only(left: defaultMarginSize), child: Image.asset("assets/images/logo.png", height: 40,),),*/
       Padding(
         padding: const EdgeInsets.only(left: defaultMarginSize, right: defaultMarginSize, top: defaultMarginSize),
         child: Row(
@@ -67,14 +71,19 @@ Widget topBar(BuildContext context) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Ahmad Fathanah M.Adil", style: myTextTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),),
+                  Text("Ahmad Fathanah M.Adil", style: myTextTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600, fontSize: 14),),
                   Text("ahmadfathanah05@gmail.com", style: myTextTheme.bodyMedium?.copyWith(fontSize: 12),),
-                  const SizedBox(height: 4,),
+                  const SizedBox(height: 2,),
                   Text("Makassar, Sulawesi Selatan", style: myTextTheme.bodyMedium?.copyWith(fontSize: 12, color: Colors.grey),)
                 ],
               ),
             ),
-            Icon(Icons.settings, color: primaryColor,)
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(SettingPage.route);
+              },
+              child: Icon(Icons.settings, color: primaryColor,),
+            )
           ],
         ),
       ),
@@ -142,11 +151,11 @@ Widget documentLegal(BuildContext context) {
           children: [
             Text(
               "Ketetapan Pemerintah",
-              style: myTextTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold, fontSize: 14),
+              style: myTextTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 16),
             ),
             Text(
               "Selengkapnya",
-              style: myTextTheme.bodyLarge?.copyWith(fontSize: 12, fontWeight: FontWeight.bold, color: primaryColor),
+              style: myTextTheme.bodySmall?.copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: blue),
             ),
           ],
         ),
@@ -181,11 +190,11 @@ Widget articles(BuildContext context) {
           children: [
             Text(
               "Artikel",
-              style: myTextTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold, fontSize: 14),
+              style: myTextTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 16),
             ),
             Text(
               "Selengkapnya",
-              style: myTextTheme.bodyLarge?.copyWith(fontSize: 12, fontWeight: FontWeight.bold, color: primaryColor),
+              style: myTextTheme.bodySmall?.copyWith(fontSize: 12, fontWeight: FontWeight.w600, color: blue),
             ),
           ],
         ),

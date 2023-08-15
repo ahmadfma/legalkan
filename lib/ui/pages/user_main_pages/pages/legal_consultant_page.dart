@@ -113,7 +113,7 @@ class ListLawyerWidget extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Rp35.000",  style: myTextTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold, fontSize: 14),),
+                        Text("Rp35.000",  style: myTextTheme.bodySmall?.copyWith(fontWeight: FontWeight.w500, fontSize: 14),),
                         CustomButton(
                           text: "Hubungi",
                           textStyle: myTextTheme.labelLarge?.copyWith(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),

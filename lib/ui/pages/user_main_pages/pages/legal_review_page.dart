@@ -26,7 +26,7 @@ class LegalReviewPage extends StatelessWidget {
               const SizedBox(height: bigMarginSize,),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: defaultMarginSize),
-                child: Text("Gak usah khawatir soal keamanan dokumenmu !", style: myTextTheme.titleLarge?.copyWith(fontSize: 22), textAlign: TextAlign.center),
+                child: Text("Gak usah khawatir soal keamanan dokumenmu !", style: myTextTheme.titleLarge?.copyWith(fontSize: 22, fontWeight: FontWeight.w600), textAlign: TextAlign.center),
               ),
               const SizedBox(height: 8,),
               Padding(
@@ -67,7 +67,7 @@ class LegalReviewPage extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: defaultMarginSize),
-                      child: Text("Daftar dokumen", style: myTextTheme.titleLarge?.copyWith(fontSize: 14, fontWeight: FontWeight.bold),),
+                      child: Text("Daftar dokumen", style: myTextTheme.titleLarge?.copyWith(fontSize: 14, fontWeight: FontWeight.w600),),
                     ),
                     const SizedBox(height: defaultMarginSize,),
                     ...dummyDocuments

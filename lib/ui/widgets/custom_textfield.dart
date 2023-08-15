@@ -21,7 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.isCardMode = false,
     this.isReadOnly = false,
     this.isObscureText = false,
-    this.padding = const EdgeInsets.symmetric(horizontal: smallMarginSize, vertical: 2),
+    this.padding = const EdgeInsets.symmetric(horizontal: mediumMarginSize, vertical: 2),
     this.textEditingController,
     this.boxDecoration,
   }) : super(key: key);

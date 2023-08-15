@@ -15,7 +15,6 @@ class DetailProfilePage extends StatefulWidget {
 class _DetailProfilePageState extends State<DetailProfilePage> {
 
   TextEditingController nameController = TextEditingController(text: "Ahmad Fathanah M.Adil");
-  TextEditingController nimController = TextEditingController(text: "D121191048");
   TextEditingController phoneController = TextEditingController(text: "082291453878");
   TextEditingController alamatController = TextEditingController(text: "BTN Kendari Permai Blok Y1 No.2");
   TextEditingController tanggalLahirController = TextEditingController(text: "2001-11-15");
@@ -37,14 +36,6 @@ class _DetailProfilePageState extends State<DetailProfilePage> {
               isReadOnly: true,
               textEditingController: nameController,
               label: 'Name',
-            ),
-            const SizedBox(height: defaultMarginSize,),
-            CustomTextField(
-              hint: 'Nomor Induk Mahasiswa (NIM)',
-              onChanged: (value) {},
-              isReadOnly: true,
-              textEditingController: nimController,
-              label: 'Nomor Induk Mahasiswa (NIM)',
             ),
             const SizedBox(height: defaultMarginSize,),
             CustomTextField(

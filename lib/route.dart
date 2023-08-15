@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:legalkan/core/models/document.dart';
-import 'package:legalkan/ui/pages/change_photo_page.dart';
 import 'package:legalkan/ui/pages/detail_profile_page.dart';
 import 'package:legalkan/ui/pages/lawyer_consult_page.dart';
 import 'package:legalkan/ui/pages/login_page.dart';
 import 'package:legalkan/ui/pages/recommendation_output_page.dart';
 import 'package:legalkan/ui/pages/review_output_page.dart';
+import 'package:legalkan/ui/pages/setting_page.dart';
 import 'package:legalkan/ui/pages/splash_screen.dart';
 import 'package:legalkan/ui/pages/user_main_pages/pages/legal_consultant_page.dart';
 import 'package:legalkan/ui/pages/user_main_pages/user_main_page.dart';
@@ -29,13 +29,13 @@ Route<dynamic> routeGenerators(settings) {
       return MaterialPageRoute(builder: (context) => const LoginPage(),);
     case LegalRecommendationPage.route:
       return MaterialPageRoute(builder: (context) => const LegalRecommendationPage(),);
-    case ChangePhotoPage.route:
-      return MaterialPageRoute(builder: (context) => const ChangePhotoPage(),);
     case DetailProfilePage.route:
       return MaterialPageRoute(builder: (context) => const DetailProfilePage(),);
     case LawyerConsultPage.route:
       final lawyer = settings.arguments as Lawyer;
       return MaterialPageRoute(builder: (context) => LawyerConsultPage(lawyer: lawyer),);
+    case SettingPage.route:
+      return MaterialPageRoute(builder: (context) => const SettingPage(),);
 
     default:
       throw('Unknown Routes');

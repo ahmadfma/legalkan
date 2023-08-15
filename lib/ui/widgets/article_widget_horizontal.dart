@@ -34,9 +34,9 @@ class ArticleWidgetHorizontal extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(12)),
-            child: Image.asset('assets/images/me.jpg', height: 120, fit: BoxFit.cover, width: double.infinity,),
+            child: Image.asset('assets/images/lawyer_dummy.jpg', height: 120, fit: BoxFit.cover, width: double.infinity,),
           ),
-          const SizedBox(height: 6,),
+          const SizedBox(height: 8,),
           Wrap(
             crossAxisAlignment: WrapCrossAlignment.center,
             direction: Axis.horizontal,
@@ -49,8 +49,8 @@ class ArticleWidgetHorizontal extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 6,),
-          Text("Pelanggaran hak cipta yang telah dilakukan oleh", style: myTextTheme.bodySmall?.copyWith(fontSize: 14, fontWeight: FontWeight.bold), maxLines: 2,),
+          const SizedBox(height: 8,),
+          Text("Pelanggaran hak cipta yang telah dilakukan oleh", style: myTextTheme.bodySmall?.copyWith(fontSize: 14, fontWeight: FontWeight.w600), maxLines: 2,),
           const SizedBox(height: 6,),
           Text("Dalam proses demokrasi sebenarnya itu biasa saja dan saya sangat menghormati sikap masing-masing partai. Pasti beliau-beliau juga sudah memberikan keputusan, sudah punya catatan-catatan", style: myTextTheme.bodySmall?.copyWith(fontSize: 12, color: Colors.grey[600]), maxLines: 3,)
         ],

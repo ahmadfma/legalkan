@@ -21,7 +21,7 @@ class LegalRecommendationPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Biarkan kami membantu persoalan legalmu !", style: myTextTheme.titleLarge?.copyWith(fontSize: 24),),
+              Text("Biarkan kami membantu persoalan legalmu !", style: myTextTheme.titleLarge?.copyWith(fontSize: 24, fontWeight: FontWeight.w600),),
               const SizedBox(height: 8,),
               Text("Kami bisa memberikan daftar dokumen yang kamu butuhkan", style: myTextTheme.bodyMedium?.copyWith(fontSize: 14),),
               const SizedBox(height: defaultMarginSize,),

@@ -43,11 +43,11 @@ class _UserMainPageState extends State<UserMainPage> {
         items: [
           BottomNavigationBarItem(
             icon: Padding(
-              padding: EdgeInsets.only(bottom: 4),
+              padding: EdgeInsets.only(bottom: 4, top: 1),
               child: SvgPicture.asset("assets/icons/home.svg"),
             ),
             activeIcon: Padding(
-              padding: EdgeInsets.only(bottom: 4),
+              padding: EdgeInsets.only(bottom: 4, top: 1),
               child: SvgPicture.asset("assets/icons/home_active.svg"),
             ),
             label: "Home"
@@ -87,11 +87,11 @@ class _UserMainPageState extends State<UserMainPage> {
           ),
           BottomNavigationBarItem(
               icon: Padding(
-                padding: EdgeInsets.only(bottom: 4),
+                padding: EdgeInsets.only(bottom: 6, top: 2),
                 child: SvgPicture.asset("assets/icons/chat.svg"),
               ),
               activeIcon: Padding(
-                padding: EdgeInsets.only(bottom: 4),
+                padding: EdgeInsets.only(bottom: 6, top: 2),
                 child: SvgPicture.asset("assets/icons/chat_active.svg"),
               ),
               label: "Assistant"

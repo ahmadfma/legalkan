@@ -75,7 +75,7 @@ class RecommendationDocumentWidget extends StatelessWidget {
             text: "Konfirmasi",
             textStyle: myTextTheme.labelLarge?.copyWith(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),
             height: 30,
-            width: 100,
+            width: 120,
             onPressed: () {
 
             },

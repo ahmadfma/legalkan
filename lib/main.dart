@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Unhas Merdeka',
+      title: 'Legalkan',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: Theme.of(context).colorScheme.copyWith(

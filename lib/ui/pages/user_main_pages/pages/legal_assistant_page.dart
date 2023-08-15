@@ -29,7 +29,7 @@ class _LegalAssistantPageState extends State<LegalAssistantPage> {
         backgroundColor: backgroundColor,
         appBar: AppBar(
           centerTitle: true,
-          title: Text("Robot Assistant", style: appbarTitleStyle,),
+          title: Text("Lawyer Assistant", style: appbarTitleStyle,),
         ),
         body: Container(
           height: size.height,

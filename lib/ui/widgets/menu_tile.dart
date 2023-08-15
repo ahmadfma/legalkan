@@ -74,7 +74,7 @@ class MenuTile extends StatelessWidget {
       if(isMine == true) return Column(
         children: [
           if(!isDocument || documentStatus == DocumentStatus.sedangDiproses.status) Text(subTitle!, style: myTextTheme.displayMedium?.copyWith(fontSize: 12, letterSpacing: 0.25),),
-          if(isDocument && documentStatus == DocumentStatus.diterima.status) Text(subTitle!, style: myTextTheme.displayMedium?.copyWith(fontSize: 12, letterSpacing: 0.25, color: green, fontWeight: FontWeight.w700),),
+          if(isDocument && documentStatus == DocumentStatus.diterima.status) Text(subTitle!, style: myTextTheme.displayMedium?.copyWith(fontSize: 12, letterSpacing: 0.25, color: green, fontWeight: FontWeight.w500),),
         ],
       );
       else return Column(

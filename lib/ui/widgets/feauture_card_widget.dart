@@ -54,7 +54,7 @@ class FeatureCardWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30,),
-                Text(title, style: myTextTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),),
+                Text(title, style: myTextTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16),),
                 const SizedBox(height: smallMarginSize,),
                 Text(subTitle, style: myTextTheme.bodySmall?.copyWith(color: Colors.white, fontSize: 12), )
               ],
