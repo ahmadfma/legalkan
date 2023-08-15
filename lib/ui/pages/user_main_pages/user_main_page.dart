@@ -23,8 +23,8 @@ class _UserMainPageState extends State<UserMainPage> {
     HomePage(),
     LegalRecommendationPage(),
     LegalReviewPage(),
-    LegalAssistantPage(),
     LegalConsultantPage(),
+    LegalAssistantPage(),
   ];
 
   var _currentPageIndex = 0;

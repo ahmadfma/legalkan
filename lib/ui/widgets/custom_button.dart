@@ -76,7 +76,7 @@ class CustomButton extends StatelessWidget {
   ButtonStyle? getButtonStyle() {
     if(enabled == false) {
       return ElevatedButton.styleFrom(
-          backgroundColor: grey02
+          backgroundColor: grey02,
       );
     }
     return buttonStyle;

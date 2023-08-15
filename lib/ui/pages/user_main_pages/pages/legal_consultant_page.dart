@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:legalkan/common/dimensions.dart';
 import 'package:legalkan/ui/pages/detail_profile_page.dart';
 import 'package:legalkan/ui/pages/splash_screen.dart';
+import 'package:legalkan/ui/widgets/custom_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../common/styles.dart';
 import '../../../../locator.dart';
@@ -26,119 +27,200 @@ class _LegalConsultantPageState extends State<LegalConsultantPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Profile",
-          style: myTextTheme.titleLarge?.copyWith(color: Colors.white),
+          "Rekomendasi pengacara",
+          style:appbarTitleStyle?.copyWith(color: Colors.white, fontSize: 16),
         ),
-        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(defaultMarginSize),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              children: [
-                Center(
-                    child: selectedProfileImage != null
-                        ? ClipRRect(
-                            borderRadius: const BorderRadius.all(Radius.circular(100)),
-                            child: Image.file(File(selectedProfileImage!.path), fit: BoxFit.cover, height: 120, width: 120,),)
-                        : Container(
-                            width: 120,
-                            height: 120,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle, color: backgroundColor),
-                            child: Center(
-                              child: Image.asset(
-                                "assets/images/user.png",
-                                width: 55,
-                                height: 55,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          )),
-                const SizedBox(
-                  height: defaultMarginSize,
-                ),
-                Text(
-                  "Ahmad Fathanah M.Adil",
-                  style: myTextTheme.titleMedium
-                      ?.copyWith(fontWeight: FontWeight.w600, fontSize: 16),
-                ),
-                const SizedBox(
-                  height: smallMarginSize,
-                ),
-                Text(
-                  "D121191048",
-                  style: myTextTheme.titleSmall
-                      ?.copyWith(fontSize: 14, color: greyText3),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: defaultMarginSize,
-            ),
-            ProfileMenu(
-              icons: Icons.image_outlined,
-              text: "Ganti Foto",
-              onClick: () {
-                //Navigator.of(context).pushNamed(ChangePhotoPage.route);
-                pickPhoto();
-              },
-            ),
-            ProfileMenu(
-              icons: Icons.account_circle_outlined,
-              text: "Profile",
-              onClick: () {
-                Navigator.of(context).pushNamed(DetailProfilePage.route);
-              },
-            ),
-            ProfileMenu(
-              icons: Icons.mail_outline_rounded,
-              text: "Hubungi Kami",
-              onClick: () {
-                launchEmail();
-              },
-            ),
-            ProfileMenu(
-              icons: Icons.logout,
-              text: "Logout",
-              onClick: () {
-                locator<NavigationCustom>().navigateReplace(SplashScreen.route);
-              },
-            ),
+            ...dummyLawyer.map((e) => ListLawyerWidget(lawyer: e)).toList()
           ],
         ),
       ),
     );
   }
 
-  void pickPhoto() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      setState(() {
-        selectedProfileImage = image;
-      });
-    }
-  }
+}
 
-  void launchEmail() async {
-    final uri = Uri(
-        scheme: 'mailto',
-        path: 'unhas.merdeka@gmail.com',
-        queryParameters: {
-          'subject': 'From Mobile App',
-          'body': 'Default body'
-        }
+class ListLawyerWidget extends StatelessWidget {
+  final Lawyer lawyer;
+  
+  const ListLawyerWidget({
+    required this.lawyer,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: defaultMarginSize),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(6)),
+                child: Image.network(lawyer.photoUrl, height: 100, width: 80, fit: BoxFit.cover,),
+              ),
+              const SizedBox(width: smallMarginSize,),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(lawyer.name, style: myTextTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),),
+                    const SizedBox(height: 2,),
+                    Text(lawyer.jobTitle, style: myTextTheme.bodyMedium?.copyWith(fontSize: 12, color: Colors.grey)),
+                    const SizedBox(height: 4,),
+                    Wrap(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(2)),
+                            color: greyBackground,
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          child: Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Icon(Icons.work, size: 12, color: Colors.grey[600],),
+                              const SizedBox(width: 4,),
+                              Text("${lawyer.experienceYear} tahun", style: myTextTheme.bodyMedium?.copyWith(fontSize: 11),)
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 6,),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(2)),
+                            color: greyBackground,
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          child: Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Icon(Icons.star, size: 12, color: Colors.grey[600],),
+                              const SizedBox(width: 4,),
+                              Text("4.5", style: myTextTheme.bodyMedium?.copyWith(fontSize: 11),)
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Rp35.000",  style: myTextTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold, fontSize: 14),),
+                        CustomButton(
+                          text: "Hubungi",
+                          textStyle: myTextTheme.labelLarge?.copyWith(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),
+                          width: 100,
+                          height: 28,
+                          borderRadius: BorderRadius.all(Radius.circular(2)),
+                          onPressed: () {
+
+                          },
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+          const SizedBox(height: mediumMarginSize,),
+          Container(
+            color: Colors.grey[200],
+            width: double.infinity,
+            height: 1,
+          )
+        ],
+      ),
     );
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
-    } else {
-      showSnackBar("Terjadi kesalahan saat memuat email");
-    }
-  }
-
-  void showSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
   }
 }
+
+class Lawyer {
+  final String name;
+  final String photoUrl;
+  final String jobTitle;
+  final int experienceYear;
+  final int rate;
+
+  Lawyer({
+    required this.name,
+    required this.experienceYear,
+    required this.jobTitle,
+    required this.photoUrl,
+    required this.rate,
+  });
+
+}
+
+final dummyLawyer = [
+  Lawyer(
+    name: "Dr. Ahmad Fathanah S.H., M.H.",
+    photoUrl: 'https://thumbs.dreamstime.com/b/lawyer-reading-law-library-university-48943498.jpg',
+    jobTitle: "Konsultan Bisnis",
+    experienceYear: 5,
+    rate: 100000
+  ),
+  Lawyer(
+      name: "Dr. Ahmad Fathanah S.H., M.H.",
+      photoUrl: 'https://thumbs.dreamstime.com/b/lawyer-reading-law-library-university-48943498.jpg',
+      jobTitle: "Konsultan Bisnis",
+      experienceYear: 5,
+      rate: 100000
+  ),
+  Lawyer(
+      name: "Dr. Ahmad Fathanah S.H., M.H.",
+      photoUrl: 'https://thumbs.dreamstime.com/b/lawyer-reading-law-library-university-48943498.jpg',
+      jobTitle: "Konsultan Bisnis",
+      experienceYear: 5,
+      rate: 100000
+  ),
+  Lawyer(
+      name: "Dr. Ahmad Fathanah S.H., M.H.",
+      photoUrl: 'https://thumbs.dreamstime.com/b/lawyer-reading-law-library-university-48943498.jpg',
+      jobTitle: "Konsultan Bisnis",
+      experienceYear: 5,
+      rate: 100000
+  ),
+  Lawyer(
+      name: "Dr. Ahmad Fathanah S.H., M.H.",
+      photoUrl: 'https://thumbs.dreamstime.com/b/lawyer-reading-law-library-university-48943498.jpg',
+      jobTitle: "Konsultan Bisnis",
+      experienceYear: 5,
+      rate: 100000
+  ),
+  Lawyer(
+      name: "Dr. Ahmad Fathanah S.H., M.H.",
+      photoUrl: 'https://thumbs.dreamstime.com/b/lawyer-reading-law-library-university-48943498.jpg',
+      jobTitle: "Konsultan Bisnis",
+      experienceYear: 5,
+      rate: 100000
+  ),
+  Lawyer(
+      name: "Dr. Ahmad Fathanah S.H., M.H.",
+      photoUrl: 'https://thumbs.dreamstime.com/b/lawyer-reading-law-library-university-48943498.jpg',
+      jobTitle: "Konsultan Bisnis",
+      experienceYear: 5,
+      rate: 100000
+  ),
+  Lawyer(
+      name: "Dr. Ahmad Fathanah S.H., M.H.",
+      photoUrl: 'https://thumbs.dreamstime.com/b/lawyer-reading-law-library-university-48943498.jpg',
+      jobTitle: "Konsultan Bisnis",
+      experienceYear: 5,
+      rate: 100000
+  )
+  ,  Lawyer(
+      name: "Dr. Ahmad Fathanah S.H., M.H.",
+      photoUrl: 'https://thumbs.dreamstime.com/b/lawyer-reading-law-library-university-48943498.jpg',
+      jobTitle: "Konsultan Bisnis",
+      experienceYear: 5,
+      rate: 100000
+  )
+];
