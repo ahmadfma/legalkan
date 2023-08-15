@@ -48,7 +48,7 @@ class MenuTile extends StatelessWidget {
               width: 26,
               child: const CircularProgressIndicator(color: blue),
             ),
-            if(showLoading == null || showLoading == false) Image.asset(iconAsset, height: 30),
+            if(showLoading == null || showLoading == false) Image.asset(iconAsset, height: 34),
             const SizedBox(width: mediumMarginSize,),
             Expanded(
               child: Column(

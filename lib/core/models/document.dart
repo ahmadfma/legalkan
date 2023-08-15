@@ -65,7 +65,7 @@ final dummyDocuments = [
     id: '6468eb8b4b792a1231fd10e2',
     name: 'Surat Pertanggung Jawaban',
     aksi: 0,
-    status: 1,
+    status: 0,
     userId: 'adasd',
     username: 'asdasd',
     activityId: '6403583498647e657fb96c39',

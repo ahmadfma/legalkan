@@ -12,21 +12,6 @@ class LegalRecommendationPage extends StatelessWidget {
 
   const LegalRecommendationPage({Key? key}) : super(key: key);
 
-  TabBar get _tabBar => TabBar(
-    indicatorColor: primaryColor,
-    labelStyle: myTextTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
-    unselectedLabelStyle: myTextTheme.bodyMedium,
-    labelColor: blackText,
-    tabs: const [
-      Tab(
-        text: "Status Pendaftaran",
-      ),
-      Tab(
-        text: "Kegiatan Aktif",
-      )
-    ],
-  );
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
