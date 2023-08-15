@@ -5,7 +5,6 @@ import 'package:legalkan/core/models/my_activity.dart';
 import 'package:legalkan/ui/pages/recommendation_output_page.dart';
 import 'package:legalkan/ui/widgets/custom_button.dart';
 import 'package:legalkan/ui/widgets/custom_textfield.dart';
-import 'package:legalkan/ui/widgets/my_activity.dart';
 
 class LegalRecommendationPage extends StatelessWidget {
   static const route = '/legal-recommendation-page';

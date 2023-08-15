@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:legalkan/common/dimensions.dart';
 import 'package:legalkan/ui/pages/detail_profile_page.dart';
+import 'package:legalkan/ui/pages/lawyer_consult_page.dart';
 import 'package:legalkan/ui/pages/splash_screen.dart';
 import 'package:legalkan/ui/widgets/custom_button.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -120,7 +121,7 @@ class ListLawyerWidget extends StatelessWidget {
                           height: 28,
                           borderRadius: BorderRadius.all(Radius.circular(2)),
                           onPressed: () {
-
+                            Navigator.of(context).pushNamed(LawyerConsultPage.route, arguments: lawyer);
                           },
                         )
                       ],

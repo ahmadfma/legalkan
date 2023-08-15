@@ -113,24 +113,32 @@ class ReviewOutputPoint {
 
 final dummyReviewOutputPoint = [
   ReviewOutputPoint(
-    title: 'Does the agreement include any termination for convenience provisions?',
-    content: 'Does the agreement include any termination for convenience provisions Does the agreement include any termination for convenience provisions? Does the agreement include any termination for convenience provisions?'
+    title: 'Apa jenis izin yang diperlukan untuk membuka restoran ayam di Indonesia?',
+    content: 'Anda memerlukan Surat Izin Usaha Perdagangan (SIUP) dan Tanda Daftar Perusahaan (TDP) sebagai dasar. Selain itu, Anda juga memerlukan izin dari Dinas Kesehatan setempat untuk memastikan standar kesehatan dan kebersihan terpenuhi.'
   ),
   ReviewOutputPoint(
-      title: 'Does the agreement include any termination for convenience provisions?',
-      content: 'Does the agreement include any termination for convenience provisions Does the agreement include any termination for convenience provisions? Does the agreement include any termination for convenience provisions?'
+      title: 'Apakah saya perlu mendapatkan sertifikasi Halal untuk restoran ayam saya?',
+      content: 'Ya, jika Anda ingin menyatakan bahwa produk Anda halal, Anda harus mendapatkan sertifikasi dari Majelis Ulama Indonesia (MUI).'
   ),
   ReviewOutputPoint(
-      title: 'Does the agreement include any termination for convenience provisions?',
-      content: 'Does the agreement include any termination for convenience provisions Does the agreement include any termination for convenience provisions? Does the agreement include any termination for convenience provisions?'
+      title: 'Bagaimana proses mendapatkan izin lingkungan?',
+      content: 'Anda harus mengajukan Analisis Mengenai Dampak Lingkungan (AMDAL) atau UKL-UPL (Upaya Pengelolaan Lingkungan dan Upaya Pemantauan Lingkungan) ke kantor lingkungan setempat.'
   ),
   ReviewOutputPoint(
-      title: 'Does the agreement include any termination for convenience provisions?',
-      content: 'Does the agreement include any termination for convenience provisions Does the agreement include any termination for convenience provisions? Does the agreement include any termination for convenience provisions?'
+      title: 'Apakah saya perlu izin khusus untuk memasang signage atau papan nama restoran?',
+      content: 'Ya, Anda memerlukan izin pemasangan reklame dari pemerintah daerah setempat.'
   ),
   ReviewOutputPoint(
-      title: 'Does the agreement include any termination for convenience provisions?',
-      content: 'Does the agreement include any termination for convenience provisions Does the agreement include any termination for convenience provisions? Does the agreement include any termination for convenience provisions?'
+      title: 'Bagaimana dengan izin tempat usaha?',
+      content: 'Anda memerlukan Surat Izin Tempat Usaha (SITU) yang dikeluarkan oleh pemerintah daerah setempat.'
+  ),
+  ReviewOutputPoint(
+      title: 'Apakah ada batasan mengenai lokasi pembukaan restoran ayam?',
+      content: 'Lokasi restoran harus sesuai dengan Rencana Tata Ruang Wilayah (RTRW) setempat. Anda harus memastikan bahwa lokasi yang Anda pilih sesuai dengan zonasi yang ditentukan oleh pemerintah daerah.'
+  ),
+  ReviewOutputPoint(
+      title: 'Apakah saya perlu asuransi untuk restoran saya?',
+      content: 'Meskipun tidak wajib, sangat disarankan untuk memiliki asuransi yang melindungi aset bisnis Anda dan tanggung jawab terhadap konsumen.'
   ),
 ];
 

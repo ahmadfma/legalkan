@@ -47,6 +47,7 @@ class CustomTextField extends StatelessWidget {
       controller: textEditingController,
       readOnly: isReadOnly,
       obscureText: isObscureText,
+
       decoration: InputDecoration(
           hintText: hint,
           hintStyle: myTextTheme.labelMedium?.copyWith(color: greyText3),
