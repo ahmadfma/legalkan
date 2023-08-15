@@ -7,6 +7,7 @@ class FeatureCardWidget extends StatelessWidget {
   final String subTitle;
   final Color backgroundColor;
   final Color iconBackgroundColor;
+  final Color? backgroundImageColor;
   final String backgroundImagePath;
   final String iconImagePath;
 
@@ -16,6 +17,7 @@ class FeatureCardWidget extends StatelessWidget {
     required this.backgroundColor,
     required this.iconBackgroundColor,
     required this.backgroundImagePath,
+    this.backgroundImageColor,
     required this.iconImagePath,
     super.key
   });
@@ -32,7 +34,7 @@ class FeatureCardWidget extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Image.asset(backgroundImagePath, fit: BoxFit.cover, width: 160, color: Colors.white.withOpacity(0.5), colorBlendMode: BlendMode.modulate, scale: 0.6,),
+          Image.asset(backgroundImagePath, fit: BoxFit.cover, width: 160, color: backgroundImageColor ?? Colors.white.withOpacity(0.5), colorBlendMode: BlendMode.modulate, scale: 0.6,),
           Positioned(
             bottom: mediumMarginSize,
             left: mediumMarginSize,

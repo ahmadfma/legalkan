@@ -10,6 +10,7 @@ class MenuTile extends StatelessWidget {
   final bool isLock;
   final bool isDocument;
   final int? documentStatus;
+  final bool? isMine;
   final VoidCallback onTap;
   final bool? showLoading;
 
@@ -21,6 +22,7 @@ class MenuTile extends StatelessWidget {
     required this.onTap,
     this.isLock = false,
     this.isDocument = false,
+    this.isMine = true,
     this.documentStatus,
     this.showLoading,
   }) : super(key: key);
@@ -60,12 +62,7 @@ class MenuTile extends StatelessWidget {
                 ],
               ),
             ),
-            if(!isLock && !isDocument) const Icon(Icons.keyboard_arrow_right, color: blue, size: 24,),
-            if(isDocument && documentStatus == DocumentStatus.diterima.status) const Icon(Icons.keyboard_arrow_right, color: blue, size: 24,),
-            if(isLock) const Padding(
-              padding: EdgeInsets.only(right: extraSmallMarginSize),
-              child: Icon(Icons.lock_outline_rounded, color: blackText, size: 26, ),
-            )
+            getIcon()
           ],
         ),
       ),
@@ -74,14 +71,30 @@ class MenuTile extends StatelessWidget {
 
   Widget getSubtitle() {
     if(showLoading != true && subTitle != null) {
-      return Column(
+      if(isMine == true) return Column(
         children: [
-          const SizedBox(height: extraSmallMarginSize,),
           if(!isDocument || documentStatus == DocumentStatus.sedangDiproses.status) Text(subTitle!, style: myTextTheme.displayMedium?.copyWith(fontSize: 12, letterSpacing: 0.25),),
           if(isDocument && documentStatus == DocumentStatus.diterima.status) Text(subTitle!, style: myTextTheme.displayMedium?.copyWith(fontSize: 12, letterSpacing: 0.25, color: green, fontWeight: FontWeight.w700),),
         ],
       );
+      else return Column(
+        children: [
+          const SizedBox(height: extraSmallMarginSize,),
+          Text(subTitle!, style: myTextTheme.displayLarge?.copyWith(fontSize: 12, letterSpacing: 0.25),),
+        ],
+      );
     }
+    return const SizedBox.shrink();
+  }
+
+  Widget getIcon() {
+    if(isMine == false) return const Icon(Icons.keyboard_arrow_right, color: blue, size: 24,);
+    if(!isLock && !isDocument) return const Icon(Icons.keyboard_arrow_right, color: blue, size: 24,);
+    if(isDocument && documentStatus == DocumentStatus.diterima.status) return const Icon(Icons.keyboard_arrow_right, color: blue, size: 24,);
+    if(isLock) return const Padding(
+      padding: EdgeInsets.only(right: extraSmallMarginSize),
+      child: Icon(Icons.lock_outline_rounded, color: blackText, size: 26, ),
+    );
     return const SizedBox.shrink();
   }
 

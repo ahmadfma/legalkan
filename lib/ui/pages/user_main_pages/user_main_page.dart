@@ -42,35 +42,65 @@ class _UserMainPageState extends State<UserMainPage> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/icons/home.svg"),
-            activeIcon: SvgPicture.asset("assets/icons/home_active.svg"),
+            icon: Padding(
+              padding: EdgeInsets.only(bottom: 4),
+              child: SvgPicture.asset("assets/icons/home.svg"),
+            ),
+            activeIcon: Padding(
+              padding: EdgeInsets.only(bottom: 4),
+              child: SvgPicture.asset("assets/icons/home_active.svg"),
+            ),
             label: "Home"
           ),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/activity.svg"),
-              activeIcon: SvgPicture.asset("assets/icons/activity_active.svg"),
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 4),
+                child: SvgPicture.asset("assets/icons/activity.svg"),
+              ),
+              activeIcon: Padding(
+                padding: EdgeInsets.only(bottom: 4),
+                child: SvgPicture.asset("assets/icons/activity_active.svg"),
+              ),
               label: "Rekomendasi",
           ),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/notif.svg"),
-              activeIcon: SvgPicture.asset("assets/icons/notif_active.svg"),
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 6, top: 2),
+                child: SvgPicture.asset("assets/icons/review.svg"),
+              ),
+              activeIcon: Padding(
+                padding: EdgeInsets.only(bottom: 6, top: 2),
+                child: SvgPicture.asset("assets/icons/review_active.svg"),
+              ),
               label: "Review"
           ),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/profile.svg"),
-              activeIcon: SvgPicture.asset("assets/icons/profile_active.svg"),
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 4),
+                child: SvgPicture.asset("assets/icons/work.svg"),
+              ),
+              activeIcon: Padding(
+                padding: EdgeInsets.only(bottom: 4),
+                child: SvgPicture.asset("assets/icons/work_active.svg"),
+              ),
               label: "E-lawyer"
           ),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/profile.svg"),
-              activeIcon: SvgPicture.asset("assets/icons/profile_active.svg"),
+              icon: Padding(
+                padding: EdgeInsets.only(bottom: 4),
+                child: SvgPicture.asset("assets/icons/chat.svg"),
+              ),
+              activeIcon: Padding(
+                padding: EdgeInsets.only(bottom: 4),
+                child: SvgPicture.asset("assets/icons/chat_active.svg"),
+              ),
               label: "Assistant"
           )
         ],
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         onTap: _onItemTapped,
-        selectedLabelStyle: myTextTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600, fontSize: 11),
+        selectedLabelStyle: myTextTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold, fontSize: 11),
         unselectedLabelStyle: myTextTheme.bodySmall?.copyWith(fontSize: 11),
         currentIndex: _currentPageIndex,
         selectedItemColor: blue,
