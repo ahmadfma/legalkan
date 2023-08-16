@@ -54,7 +54,7 @@ class _LegalAssistantPageState extends State<LegalAssistantPage> {
                     });
                     Future.delayed(Duration(seconds: 2), () {
                       setState(() {
-                        chats.add(BubbleChatWidget(message: "Syarat hukum untuk bisnis dapat bervariasi tergantung pada yurisdiksi (wilayah hukum) tempat bisnis tersebut beroperasi dan jenis bisnisnya. Berikut adalah beberapa syarat umum yang sering kali diperlukan untuk memulai bisnis secara legal:", isMe: false));
+                        chats.add(BubbleChatWidget(message: "Syarat hukum untuk bisnis dapat bervariasi tergantung pada yurisdiksi (wilayah hukum) tempat bisnis tersebut beroperasi dan jenis bisnisnya. Berikut adalah beberapa syarat umum yang sering kali diperlukan untuk memulai bisnis secara legal: Pendaftaran Bisnis, Izin Usaha, Pajak. penting untuk mencari informasi lebih lanjut mengenai persyaratan hukum yang spesifik untuk jenis bisnis Anda dan yurisdiksi tempat Anda beroperasi. Konsultasikan dengan ahli hukum atau otoritas setempat jika Anda memiliki pertanyaan lebih lanjut tentang syarat legal untuk bisnis Anda.", isMe: false));
                       });
                     },);
                   },),
@@ -85,6 +85,11 @@ class _LegalAssistantPageState extends State<LegalAssistantPage> {
                             controller.text = "";
                             isDefault = false;
                           });
+                          Future.delayed(Duration(seconds: 2), () {
+                            setState(() {
+                              chats.add(BubbleChatWidget(message: "Yup sama sama !, silahkan konsultasikan apa saja tentang legalitas bisnismu.", isMe: false));
+                            });
+                          },);
                         },
                         child: Icon(Icons.send, color: blue,),
                       )
