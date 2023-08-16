@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:legalkan/common/dimensions.dart';
 import 'package:legalkan/common/styles.dart';
-
 import '../../../widgets/custom_textfield.dart';
 
 class LegalAssistantPage extends StatefulWidget {
@@ -14,12 +13,8 @@ class LegalAssistantPage extends StatefulWidget {
 class _LegalAssistantPageState extends State<LegalAssistantPage> {
 
   final controller = TextEditingController(text: "");
-  final chats = [
-    BubbleChatWidget(message: 'Selamat pagi pak ahmad, terima kasih sudah menerima permintaan saya untuk konsultasi', isMe: true),
-    BubbleChatWidget(message: 'saya ingin bertanya apa saja yang diperlukan untuk mengurus surat izin usaha ?', isMe: true),
-    BubbleChatWidget(message: 'Pagi pak giga, terima kasih sudah memakai jasa konsultasi saya', isMe: false),
-    BubbleChatWidget(message: '5 menit lagi saya akan menelfon anda untuk menjelaskan lebih detail', isMe: false),
-  ];
+  final chats = [];
+  bool isDefault = true;
 
   @override
   Widget build(BuildContext context) {
@@ -36,15 +31,34 @@ class _LegalAssistantPageState extends State<LegalAssistantPage> {
           width: size.width,
           child: Stack(
             children: [
-              Expanded(
-                child: ListView(
-                  padding: EdgeInsets.only(bottom: 80, top: defaultMarginSize),
-                  reverse: true,
-                  children: [
-                    ...chats.reversed.map((e) => e).toList()
-                  ],
+              if(!isDefault)
+                Expanded(
+                  child: ListView(
+                    padding: EdgeInsets.only(bottom: 80, top: defaultMarginSize),
+                    reverse: true,
+                    children: [
+                      ...chats.reversed.map((e) => e).toList()
+                    ],
+                  ),
                 ),
-              ),
+              if(isDefault)
+                Positioned(
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: ChatRecommendation(onCLick: (message ) {
+                    setState(() {
+                      isDefault = false;
+                      chats.add(BubbleChatWidget(message: message, isMe: true));
+                    });
+                    Future.delayed(Duration(seconds: 2), () {
+                      setState(() {
+                        chats.add(BubbleChatWidget(message: "Syarat hukum untuk bisnis dapat bervariasi tergantung pada yurisdiksi (wilayah hukum) tempat bisnis tersebut beroperasi dan jenis bisnisnya. Berikut adalah beberapa syarat umum yang sering kali diperlukan untuk memulai bisnis secara legal:", isMe: false));
+                      });
+                    },);
+                  },),
+                ),
               Positioned(
                 bottom: 0,
                 left: 0,
@@ -69,6 +83,7 @@ class _LegalAssistantPageState extends State<LegalAssistantPage> {
                           setState(() {
                             chats.add(BubbleChatWidget(message: controller.text, isMe: true));
                             controller.text = "";
+                            isDefault = false;
                           });
                         },
                         child: Icon(Icons.send, color: blue,),
@@ -80,6 +95,63 @@ class _LegalAssistantPageState extends State<LegalAssistantPage> {
             ],
           ),
         )
+      ),
+    );
+  }
+}
+
+class ChatRecommendation extends StatelessWidget {
+
+  final Function(String) onCLick;
+
+  const ChatRecommendation({required this.onCLick, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: bigMarginSize,),
+            Image.asset("assets/images/chat_ai.png", width: 160,),
+            const SizedBox(height: defaultMarginSize,),
+            Text("Konsultasi apa aja tentang\nlegalitas bisnismu", style: myTextTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600, fontSize: 16), textAlign: TextAlign.center,),
+            const SizedBox(height: 30,),
+            chat(
+              message:  "Bantu saya dengan menjelaskan apa saja syarat legal bisnis",
+              onPressed: (message) => onCLick(message),
+            ),
+            const SizedBox(height: defaultMarginSize,),
+            chat(
+              message: "Tolong jelaskan bedanya dokumen legal untuk UMKM dan UKM",
+              onPressed: (message) => onCLick(message),
+            ),
+            const SizedBox(height: defaultMarginSize,),
+            chat(
+              message: "Apa saja persyaratan untuk melegalkan produk",
+              onPressed: (message) => onCLick(message),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget chat({required String message, required Function(String) onPressed}) {
+    return InkWell(
+      onTap: () {
+        onPressed(message);
+      },
+      child: Container(
+        padding: EdgeInsets.all(mediumMarginSize),
+        width: double.infinity,
+        decoration: whiteCardDecoration.copyWith(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          color: backgroundColor2,
+        ),
+        child: Text(message, style: myTextTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),),
       ),
     );
   }
